@@ -10,6 +10,13 @@ void show_array(int array[],int size)
     cout<<array[index]<<endl;
   }
 }
+void show_index(int index,int state)
+{
+  if(state==1)
+  cout<<"Item found... Index is "<<index<<endl;
+  else if(state==0)
+  cout<<"Item Not Found "<<endl;
+}
 void reverse_arr(int array[],int size)
 {
   int index_1,index_2=0,temp,mid_point;
@@ -22,4 +29,14 @@ void reverse_arr(int array[],int size)
         index_2++;
     }
     show_array(array,size);
+}
+void search_from_unsortedArray(int array[],int size,int index,int search_item)
+{
+  if(search_item==array[index])
+  show_index(index,1);
+  else if((search_item!=array[index]) && (index<size))
+  search_from_unsortedArray(array,size,++index,search_item);
+  else
+  show_index(index,0);
+
 }
