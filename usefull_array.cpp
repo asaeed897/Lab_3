@@ -40,3 +40,53 @@ void search_from_unsortedArray(int array[],int size,int index,int search_item)
   show_index(index,0);
 
 }
+void sort_array(int array[],int size)
+{
+    int index_1,index_2,temp;
+    for(index_1=0; index_1<size; index_1++)
+    {
+        for(index_2=index_1; index_2<size; index_2++)
+        {
+            temp=array[index_1];
+            if(array[index_1]>array[index_2])
+            {
+                array[index_1]=array[index_2];
+                array[index_2]=temp;
+            }
+
+        }
+    }
+}
+bool checkSort(int array[],int size)
+{
+    int index,count=0;
+    for(index=0; index+1<size; index++)
+    {
+        if(array[index]>array[index+1])
+        {
+            count=1;
+        }
+    }
+    if(count==0)
+        return true;
+    else if(count==1)
+        return false;
+
+}
+
+void search_from_sortedArray(int array[],int start,int end,int search_item)
+{
+   int mid;
+   if (start<=end)
+   {
+      mid = (start + end) / 2;
+      if (search_item ==array[mid])
+          show_index(mid,1);
+      else if (search_item < array[mid])
+          search_from_sortedArray(array, start, mid-1,search_item);
+      else if (search_item > array[mid])
+          search_from_sortedArray(array, mid+1, end,search_item);
+  }
+   else
+   show_index(mid,0);
+}
