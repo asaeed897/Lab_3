@@ -90,3 +90,31 @@ void search_from_sortedArray(int array[],int start,int end,int search_item)
    else
    show_index(mid,0);
 }
+void left_rotateArray(int array[],int size,int rotate_time)
+{
+  int i,temp,index;
+  for(i=0;i<rotate_time;i++)
+  {
+    temp=array[0];
+    for(index=0;index<size-1;index++)
+    {
+      array[index]=array[index+1];
+    }
+    array[size-1]=temp;
+  }
+  show_array(array,size);
+}
+void right_rotateArray(int array[],int size,int rotate_time)
+{
+  int i,temp,index;
+  for(i=0;i<rotate_time;i++)
+  {
+    temp=array[size-1];
+    for(index=size-1;index>=0;index--)
+    {
+      array[index]=array[index-1];
+    }
+    array[0]=temp;
+  }
+  show_array(array,size);
+}

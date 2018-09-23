@@ -19,6 +19,7 @@ int main()
   }
   cout<<"Do you want to Reverse the array: Press 'R': "<<endl;
   cout<<"Do you want to Sort the array: Press 'S': "<<endl;
+  cout<<"Do you want to Rotate the array: Press 'T': "<<endl;
   cout<<"Do you want to Search item from unsorted_array: Press 'U': "<<endl;
   cout<<"Do you want to Search item from unsorted_array: Press 'F': "<<endl;
   cin>>choice;
@@ -50,6 +51,18 @@ int main()
       show_array(array,size);
     }
     search_from_sortedArray(array,0,size-1,search_item);
+  }
+  else if(choice=='T' || choice=='t')
+  {
+    int rotate_time;
+    cout<<"\nFor left rotate press 'L' and For right rotate press 'R': ";
+    cin>>choice;
+    cout<<"\nHow many time Do you want to rotate: ";
+    cin>>rotate_time;
+    if(choice=='L' || choice=='l')
+    left_rotateArray(array,size,rotate_time);
+    else if(choice=='R' || choice=='r')
+    right_rotateArray(array,size,rotate_time);
   }
 
   return 0;
