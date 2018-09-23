@@ -12,30 +12,31 @@ int main()
   cout<<"Enter the size of array: ";
   cin>>size;
   int array[size];
-  cout << "Enter Array item: " << endl;
+  cout << "Enter Array items: " << endl;
   for(index=0;index<size;index++)
   {
       cin>>array[index];
   }
-  cout<<"Do you want to Reverse the array: Press 'R': "<<endl;
-  cout<<"Do you want to Sort the array: Press 'S': "<<endl;
-  cout<<"Do you want to Rotate the array: Press 'T': "<<endl;
-  cout<<"Do you want to Search item from unsorted_array: Press 'U': "<<endl;
-  cout<<"Do you want to Search item from unsorted_array: Press 'F': "<<endl;
+  cout<<"Do you want to Reverse the array: Press '1': "<<endl;
+  cout<<"Do you want to Sort the array: Press '2': "<<endl;
+  cout<<"Do you want to Rotate the array: Press '3': "<<endl;
+  cout<<"Do you want to Search item from unsorted_array: Press '4': "<<endl;
+  cout<<"Do you want to Search item from Sorted_array: Press '5': "<<endl;
   cin>>choice;
-  if(choice=='R' || choice=='r')
+  if(choice=='1')
   reverse_arr(array,size);
-  else if (choice=='S' || choice=='s')
-  {sort_array(array,size);
-    show_array(array,size);}
-  else if(choice=='U' || choice=='u')
+  else if (choice=='2')
+  sort_array(array,size);
+  else if(choice=='3')
+  rotateArray(array,size);
+  else if(choice=='4')
   {
     int search_item;
     cout<<"Enter search item: ";
     cin>>search_item;
     search_from_unsortedArray(array,size,0,search_item);
   }
-  else if(choice=='F' || choice=='f')
+  else if(choice=='5')
   {
     int search_item;
     bool check;
@@ -45,25 +46,10 @@ int main()
     if(check==true)
     cout<<"\nArray is already Sorted "<<endl;
     else if(check==false)
-    {
-      sort_array(array,size);
-      cout<<"Sorted array"<<endl;
-      show_array(array,size);
-    }
+    sort_array(array,size);
     search_from_sortedArray(array,0,size-1,search_item);
   }
-  else if(choice=='T' || choice=='t')
-  {
-    int rotate_time;
-    cout<<"\nFor left rotate press 'L' and For right rotate press 'R': ";
-    cin>>choice;
-    cout<<"\nHow many time Do you want to rotate: ";
-    cin>>rotate_time;
-    if(choice=='L' || choice=='l')
-    left_rotateArray(array,size,rotate_time);
-    else if(choice=='R' || choice=='r')
-    right_rotateArray(array,size,rotate_time);
-  }
-
+  else
+  cout<<"Wrong choice"<<endl;
   return 0;
 }

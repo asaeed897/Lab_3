@@ -28,6 +28,7 @@ void reverse_arr(int array[],int size)
         array[index_2]=temp;
         index_2++;
     }
+    cout<<"\nReverse array"<<endl;
     show_array(array,size);
 }
 void search_from_unsortedArray(int array[],int size,int index,int search_item)
@@ -39,23 +40,6 @@ void search_from_unsortedArray(int array[],int size,int index,int search_item)
   else
   show_index(index,0);
 
-}
-void sort_array(int array[],int size)
-{
-    int index_1,index_2,temp;
-    for(index_1=0; index_1<size; index_1++)
-    {
-        for(index_2=index_1; index_2<size; index_2++)
-        {
-            temp=array[index_1];
-            if(array[index_1]>array[index_2])
-            {
-                array[index_1]=array[index_2];
-                array[index_2]=temp;
-            }
-
-        }
-    }
 }
 bool checkSort(int array[],int size)
 {
@@ -74,6 +58,32 @@ bool checkSort(int array[],int size)
 
 }
 
+void sort_array(int array[],int size)
+{
+    int index_1,index_2,temp;
+    bool check=checkSort(array,size);
+    if(check==true)
+    cout<<"Array is already Sorted"<<endl;
+    else if(check==false)
+    {
+    for(index_1=0; index_1<size; index_1++)
+    {
+        for(index_2=index_1; index_2<size; index_2++)
+        {
+            temp=array[index_1];
+            if(array[index_1]>array[index_2])
+            {
+                array[index_1]=array[index_2];
+                array[index_2]=temp;
+            }
+
+        }
+    }
+    cout<<"\nSorted array"<<endl;
+    show_array(array,size);
+  }
+}
+
 void search_from_sortedArray(int array[],int start,int end,int search_item)
 {
    int mid;
@@ -90,9 +100,16 @@ void search_from_sortedArray(int array[],int start,int end,int search_item)
    else
    show_index(mid,0);
 }
-void left_rotateArray(int array[],int size,int rotate_time)
+void rotateArray(int array[],int size)
 {
-  int i,temp,index;
+  int rotate_time,i,temp,index;
+  char choice;
+  cout<<"\nFor left rotate press 'L' and For right rotate press 'R': ";
+  cin>>choice;
+  cout<<"\nHow many time Do you want to rotate: ";
+  cin>>rotate_time;
+  if(choice=='L' || choice=='l')
+  {
   for(i=0;i<rotate_time;i++)
   {
     temp=array[0];
@@ -102,11 +119,9 @@ void left_rotateArray(int array[],int size,int rotate_time)
     }
     array[size-1]=temp;
   }
-  show_array(array,size);
 }
-void right_rotateArray(int array[],int size,int rotate_time)
-{
-  int i,temp,index;
+  else if(choice=='R' || choice=='r')
+  {
   for(i=0;i<rotate_time;i++)
   {
     temp=array[size-1];
@@ -116,5 +131,7 @@ void right_rotateArray(int array[],int size,int rotate_time)
     }
     array[0]=temp;
   }
+}
+cout<<"\nRotated array"<<endl;
   show_array(array,size);
 }
